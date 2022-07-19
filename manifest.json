@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2, 
+    "name": "Name2Clip",
+    "version": "0.1.0",
+    "description": "things",
+    "icons": {
+        "128": "assets/global-icon128.png",
+        "48": "assets/global-icon48.png",
+        "16": "assets/global-icon16.png"
+    },
+    "web_accessible_resources": [
+
+    ],
+    "background": {
+        "scripts": [
+            "scripts/main.js"
+        ],
+        "persistent": false
+    },
+    "permissions": [
+        "<all_urls>",
+        "activeTab"
+    ]
+}
