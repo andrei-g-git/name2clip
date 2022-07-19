@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    //mode: "development",
+    mode: "production",
     entry: {
         main: path.resolve(__dirname, "src/scripts/background/main.js"),
         popup: path.resolve(__dirname, "src/scripts/popup/popup.js"),
