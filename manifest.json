@@ -8,9 +8,10 @@
         "48": "assets/global-icon48.png",
         "16": "assets/global-icon16.png"
     },
-    "web_accessible_resources": [
-
-    ],
+    "browser_action": {
+        "default_icon": "assets/global-icon16.png",
+        "default_popup": "popup.html"
+    },
     "background": {
         "scripts": [
             "scripts/main.js"
@@ -19,6 +20,8 @@
     },
     "permissions": [
         "<all_urls>",
-        "activeTab"
+        "activeTab",
+        "unlimitedStorage",
+        "storage"
     ]
 }

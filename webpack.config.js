@@ -1,12 +1,13 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     //mode: "development",
     entry: {
         main: path.resolve(__dirname, "src/scripts/background/main.js"),
+        popup: path.resolve(__dirname, "src/scripts/popup/popup.js"),
     },
     output: {
         path: path.resolve(__dirname, "dist/"),
@@ -17,12 +18,12 @@ module.exports = {
     // },
     plugins: [
         new CleanWebpackPlugin(),
-        // new HtmlWebpackPlugin({
-        //     title: "Thanks for installing Tab Butler 🥳🤗!",
-        //     filename: path.resolve(__dirname, `${distPath}/welcome/welcome.html`),
-        //     template: `src/welcome/welcome.html`,
-        //     chunks: ["welcome"]
-        // }),
+        new HtmlWebpackPlugin({
+            title: "test title",
+            filename: path.resolve(__dirname, "dist/popup.html"),
+            template: "src/popup.html"/* ,
+            chunks: ["welcome"] */
+        }),
 
 
         /* {}, */
