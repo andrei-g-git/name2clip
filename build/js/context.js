@@ -15,10 +15,11 @@ browser
     .onClicked
     .addListener(event => handleContextClick(
         event, 
-        postMetadata
+        postMetadata,
+        browser
     ));
 
-const handleContextClick = (event, postMetadata) => {
+const handleContextClick = (event, postMetadata, browser) => {
     logClickInfo(event);
 
     postMetadata(
@@ -27,6 +28,16 @@ const handleContextClick = (event, postMetadata) => {
         event.srcUrl,
         "http://localhost:9999/scraper"
     )
+        .then(response => {
+            console.log("RES:::: ", response)
+            browser.downloads.download({
+                url: "https://wikipedia.org",
+                filename: response,
+                saveAs: true
+            },
+                () => console.log("should open file explorer")
+            )
+        });
 };
 
 const postMetadata = (url, link, src, apiPath) => {
@@ -41,22 +52,13 @@ const postMetadata = (url, link, src, apiPath) => {
     const data = JSON.stringify(dataObject);
     console.log("json:    " , data)
 
-    $.ajax({
+    return $.ajax({
         url: apiPath,
         type: "POST",
         data: data,
-        //data: "awefawefawefe",
-        success: (response) => {
-            console.log("got data")
-            console.log(response)
-        }
+        dataType: "text"
     })
-
-    console.log("after api call")
 };
-
-
-
 
 const logClickInfo = (event) => {
     console.log("page: " + event.pageUrl);
