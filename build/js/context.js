@@ -67,5 +67,4 @@ const logClickInfo = (event) => {
     console.log("media type: " + event.mediaType);
     console.log("parent id" + event.parentMenuItemId);
     console.log("src:", event.srcUrl);
-    //console.log("", event.);
 }
