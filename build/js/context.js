@@ -29,10 +29,12 @@ const handleContextClick = (event, postMetadata, browser) => {
         "http://localhost:9999/scraper"
     )
         .then(response => {
+
             console.log("RES:::: ", response)
+            const fileName = response + randomIntRange(1000, 9999);
             browser.downloads.download({
                 url: "https://wikipedia.org",
-                filename: response,
+                filename: fileName,
                 saveAs: true
             },
                 () => console.log("should open file explorer")
@@ -59,6 +61,12 @@ const postMetadata = (url, link, src, apiPath) => {
         dataType: "text"
     })
 };
+
+const randomIntRange = (min, max) => {
+    return Math.floor(
+        Math.random() * (max - min) + min
+    );
+}
 
 const logClickInfo = (event) => {
     console.log("page: " + event.pageUrl);
